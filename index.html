@@ -1,6 +1,3 @@
-# SONAR // ABYSS — `index.html`
-
-```html
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -20,20 +17,23 @@
   --orange:#d8a84a;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html,
+body{
   margin:0;
   height:100%;
   background:var(--bg);
   color:var(--green);
-  font-family:Consolas,monospace
+  font-family:Consolas,monospace;
 }
 
 body{
   display:flex;
   flex-direction:column;
-  overflow:hidden
+  overflow:hidden;
 }
 
 header{
@@ -43,17 +43,19 @@ header{
   align-items:center;
   gap:10px;
   padding:0 15px;
-  background:var(--panel)
+  background:var(--panel);
 }
 
 h1{
   font-size:17px;
   letter-spacing:4px;
-  margin-right:auto
+  margin-right:auto;
 }
 
-button,input,select{
-  font:inherit
+button,
+input,
+select{
+  font:inherit;
 }
 
 button{
@@ -61,21 +63,21 @@ button{
   color:var(--green);
   border:1px solid #23705e;
   padding:7px 10px;
-  cursor:pointer
+  cursor:pointer;
 }
 
 button:hover{
-  background:#0a281f
+  background:#0a281f;
 }
 
 button.danger{
   color:var(--red);
-  border-color:#713838
+  border-color:#713838;
 }
 
 button.warning{
   color:var(--yellow);
-  border-color:#806f2d
+  border-color:#806f2d;
 }
 
 input[type="text"],
@@ -84,13 +86,13 @@ select{
   background:#020807;
   border:1px solid #23705e;
   color:var(--green);
-  padding:8px
+  padding:8px;
 }
 
 #layout{
   display:flex;
   flex:1;
-  min-height:0
+  min-height:0;
 }
 
 .side{
@@ -98,7 +100,7 @@ select{
   border-right:1px solid var(--line);
   background:var(--panel);
   padding:14px;
-  overflow:auto
+  overflow:auto;
 }
 
 main{
@@ -107,7 +109,7 @@ main{
   align-items:center;
   justify-content:center;
   position:relative;
-  min-width:0
+  min-width:0;
 }
 
 canvas{
@@ -116,61 +118,61 @@ canvas{
   max-width:calc(100vw - 360px);
   max-height:calc(100vh - 75px);
   border:1px solid var(--line);
-  box-shadow:0 0 35px #001f18
+  box-shadow:0 0 35px #001f18;
 }
 
 label{
   display:block;
   font-size:11px;
   color:#63bba5;
-  margin:13px 0 5px
+  margin:13px 0 5px;
 }
 
 .row{
   display:flex;
-  justify-content:space-between
+  justify-content:space-between;
 }
 
 .small{
   font-size:11px;
   color:var(--dim);
-  line-height:1.5
+  line-height:1.5;
 }
 
 .badge{
   border:1px solid #23705e;
   padding:5px 7px;
-  font-size:10px
+  font-size:10px;
 }
 
 .offline{
-  color:#a66
+  color:#a66;
 }
 
 #contacts{
-  margin-top:10px
+  margin-top:10px;
 }
 
 .contact{
   border:1px solid #0d332b;
   padding:8px;
   margin:6px 0;
-  font-size:11px
+  font-size:11px;
 }
 
 .contact.hidden-contact{
-  border-color:#705b25
+  border-color:#705b25;
 }
 
 .contact-name{
   font-size:12px;
-  margin-top:3px
+  margin-top:3px;
 }
 
 .contact-type{
   color:var(--dim);
   font-size:10px;
-  margin-top:3px
+  margin-top:3px;
 }
 
 .visibility{
@@ -178,41 +180,41 @@ label{
   margin-left:5px;
   font-size:9px;
   padding:2px 4px;
-  border:1px solid #23705e
+  border:1px solid #23705e;
 }
 
 .visibility.off{
   color:var(--yellow);
-  border-color:#806f2d
+  border-color:#806f2d;
 }
 
 .contact .actions{
   display:flex;
   flex-wrap:wrap;
   gap:5px;
-  margin-top:7px
+  margin-top:7px;
 }
 
 .contact button{
   font-size:10px;
-  padding:4px 6px
+  padding:4px 6px;
 }
 
 .editor{
   border:1px solid #16483d;
   padding:10px;
   margin-top:8px;
-  background:#020a08
+  background:#020a08;
 }
 
 .editor input,
 .editor select{
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 .editor-buttons{
   display:flex;
-  gap:5px
+  gap:5px;
 }
 
 #join{
@@ -222,7 +224,7 @@ label{
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:5
+  z-index:5;
 }
 
 .box{
@@ -230,11 +232,11 @@ label{
   border:1px solid #23705e;
   background:#03100d;
   padding:24px;
-  box-shadow:0 0 45px #001f18
+  box-shadow:0 0 45px #001f18;
 }
 
 .box h2{
-  letter-spacing:3px
+  letter-spacing:3px;
 }
 
 .box input{
@@ -243,11 +245,11 @@ label{
   border:1px solid #23705e;
   color:var(--green);
   padding:10px;
-  margin:7px 0 12px
+  margin:7px 0 12px;
 }
 
 .box button{
-  width:100%
+  width:100%;
 }
 
 #toast{
@@ -259,7 +261,7 @@ label{
   background:#061914;
   border:1px solid #23705e;
   display:none;
-  z-index:4
+  z-index:4;
 }
 
 #share{
@@ -267,22 +269,22 @@ label{
   border:1px solid #16483d;
   padding:8px;
   font-size:10px;
-  margin-top:8px
+  margin-top:8px;
 }
 
 .sound-box{
   border:1px solid #16483d;
   padding:8px;
-  margin-top:8px
+  margin-top:8px;
 }
 
 .sound-status{
   font-size:10px;
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 .hidden{
-  display:none!important
+  display:none!important;
 }
 
 .master-note{
@@ -290,13 +292,13 @@ label{
   padding:8px;
   margin-top:10px;
   font-size:10px;
-  line-height:1.5
+  line-height:1.5;
 }
 
 hr{
   border:0;
   border-top:1px solid #16483d;
-  margin:13px 0
+  margin:13px 0;
 }
 </style>
 </head>
@@ -475,11 +477,11 @@ hr{
 
       <b>VISÍVEL</b> → jogador pode detectar.<br>
 
-      <b>OCULTO</b> → somente o Mestre vê.
+      <b>OCULTO</b> → jogador não detecta.
 
       <br><br>
 
-      O nome do contato também pode ser
+      O nome do contato pode ser
       alterado a qualquer momento.
 
     </div>
@@ -646,14 +648,10 @@ let audio = null;
 
 let soundReady = false;
 
-let lastPingContact = null;
-
-let lastPingSweep = -1;
-
 
 /*
- * Cria o AudioContext apenas quando o usuário
- * interage com a página.
+ * O AudioContext só é criado depois de
+ * uma interação do usuário.
  */
 
 function activateAudio(){
@@ -664,8 +662,7 @@ function activateAudio(){
 
       audio =
         new (
-          window.AudioContext
-          ||
+          window.AudioContext ||
           window.webkitAudioContext
         )();
 
@@ -700,14 +697,13 @@ function activateAudio(){
 
 
 /*
- * Som curto e limpo de sonar.
+ * Ping do sonar.
  */
 
 function playPing(){
 
   if(
-    !soundReady
-    ||
+    !soundReady ||
     !audio
   ){
 
@@ -792,7 +788,7 @@ function playPing(){
 
 
 /*
- * Som diferente para teste.
+ * Teste manual do som.
  */
 
 function testPing(){
@@ -808,7 +804,7 @@ function testPing(){
 
 
 /*
- * Interface do áudio.
+ * Atualiza interface do áudio.
  */
 
 function updateSoundUI(){
@@ -826,7 +822,6 @@ function updateSoundUI(){
     status.textContent =
       '🔊 Som ativado';
 
-
     header.textContent =
       '🔊 SOM ON';
 
@@ -836,7 +831,6 @@ function updateSoundUI(){
 
     status.textContent =
       '🔇 Som desativado';
-
 
     header.textContent =
       'ATIVAR SOM';
@@ -849,6 +843,29 @@ function updateSoundUI(){
 /* =========================================================
    UTILIDADES
    ========================================================= */
+
+function showToast(text){
+
+  $('toast').textContent =
+    text;
+
+
+  $('toast').style.display =
+    'block';
+
+
+  setTimeout(
+    () => {
+
+      $('toast').style.display =
+        'none';
+
+    },
+    1800
+  );
+
+}
+
 
 function randomRoom(){
 
@@ -870,45 +887,18 @@ function isMaster(){
 }
 
 
-function showToast(text){
-
-  $('toast').textContent =
-    text;
-
-
-  $('toast').style.display =
-    'block';
-
-
-  setTimeout(
-    () => {
-      $('toast').style.display =
-        'none';
-    },
-    1800
-  );
-
-}
-
-
 /* =========================================================
-   TIPOS DE CONTATO
+   TIPOS
    ========================================================= */
 
 const CONTACT_TYPES = [
 
   'Criatura',
-
   'Destroços',
-
   'Submarino',
-
   'Anomalia',
-
   'Sinal',
-
   'Perigo',
-
   'Personalizado'
 
 ];
@@ -950,7 +940,7 @@ const RANDOM_CONTACTS = [
 
 
 /* =========================================================
-   CONFIGURAÇÃO DO SUPABASE
+   CONFIGURAÇÃO
    ========================================================= */
 
 function saveCreds(){
@@ -1038,8 +1028,7 @@ else{
 
 
   if(
-    master
-    &&
+    master &&
     !room
   ){
 
@@ -1067,7 +1056,7 @@ else{
 
 
 /* =========================================================
-   CONEXÃO
+   CONECTAR
    ========================================================= */
 
 async function connect(){
@@ -1098,10 +1087,6 @@ async function connect(){
     .add('hidden');
 
 
-  /*
-   * MESTRE
-   */
-
   if(master){
 
     $('master')
@@ -1120,12 +1105,9 @@ async function connect(){
 
 
     const url =
-      location.origin
-      +
-      location.pathname
-      +
-      '?room='
-      +
+      location.origin +
+      location.pathname +
+      '?room=' +
       encodeURIComponent(room);
 
 
@@ -1136,20 +1118,12 @@ async function connect(){
 
   else{
 
-    /*
-     * Jogadores também podem ativar o áudio.
-     */
-
     $('soundHeader')
       .classList
       .remove('hidden');
 
   }
 
-
-  /*
-   * Canal da sala.
-   */
 
   channel =
     supabase.channel(
@@ -1164,9 +1138,9 @@ async function connect(){
     );
 
 
-  /*
-   * ESTADO
-   */
+  /* =======================================================
+     RECEBER ESTADO
+     ======================================================= */
 
   channel.on(
     'broadcast',
@@ -1175,31 +1149,92 @@ async function connect(){
     },
     ({payload}) => {
 
-      /*
-       * Jogador recebe o estado público.
-       */
-
       if(
-        !master
-        &&
-        payload?.state
+        master ||
+        !payload?.state
       ){
 
-        state =
-          payload.state;
+        return;
 
       }
+
+
+      /*
+       * IMPORTANTE:
+       *
+       * O jogador NÃO substitui os efeitos
+       * locais de hit/phase.
+       *
+       * O Mestre só informa:
+       *
+       * - posição
+       * - nome
+       * - tipo
+       * - se está revelado
+       *
+       * A detecção fica por conta do jogador.
+       */
+
+      const oldContacts =
+        state.contacts || [];
+
+
+      const incomingContacts =
+        payload.state.contacts || [];
+
+
+      state = {
+
+        ...payload.state,
+
+        contacts:
+          incomingContacts.map(
+            incoming => {
+
+              const old =
+                oldContacts.find(
+                  oldContact =>
+                    oldContact.id ===
+                    incoming.id
+                );
+
+
+              return {
+
+                ...incoming,
+
+                /*
+                 * Estado visual LOCAL.
+                 */
+
+                hit:
+                  old?.hit || 0,
+
+                phase:
+                  old?.phase ?? 999,
+
+                /*
+                 * Qual foi a última volta
+                 * em que este contato deu ping?
+                 */
+
+                lastDetection:
+                  old?.lastDetection ?? -1
+
+              };
+
+            }
+          )
+
+      };
 
     }
   );
 
 
-  /*
-   * PEDIDO DE ESTADO
-   *
-   * Quando um jogador entra depois,
-   * ele pede ao Mestre o estado atual.
-   */
+  /* =======================================================
+     PEDIR ESTADO AO MESTRE
+     ======================================================= */
 
   channel.on(
     'broadcast',
@@ -1218,15 +1253,16 @@ async function connect(){
   );
 
 
-  /*
-   * CONECTAR
-   */
+  /* =======================================================
+     CONECTAR
+     ======================================================= */
 
   channel.subscribe(
     async status => {
 
       if(
-        status === 'SUBSCRIBED'
+        status ===
+        'SUBSCRIBED'
       ){
 
         $('status')
@@ -1246,10 +1282,6 @@ async function connect(){
         }
 
         else{
-
-          /*
-           * Pede o estado atual ao Mestre.
-           */
 
           channel.send({
 
@@ -1305,7 +1337,9 @@ function getPublicState(){
 
 
     /*
-     * CONTATOS OCULTOS NÃO SÃO ENVIADOS.
+     * Apenas contatos REVELADOS são enviados.
+     *
+     * hit/phase não são enviados.
      */
 
     contacts:
@@ -1332,10 +1366,6 @@ function getPublicState(){
             y:
               contact.y,
 
-            hit:0,
-
-            phase:0,
-
             visible:true
 
           })
@@ -1353,8 +1383,7 @@ function getPublicState(){
 async function sendState(){
 
   if(
-    channel
-    &&
+    channel &&
     master
   ){
 
@@ -1379,7 +1408,7 @@ async function sendState(){
 
 
 /* =========================================================
-   GERAR ID
+   ID
    ========================================================= */
 
 function newContactId(){
@@ -1416,11 +1445,17 @@ function createContact(
 
     y,
 
+    visible:true,
+
+    /*
+     * Estado visual do Mestre.
+     */
+
     hit:0,
 
-    phase:0,
+    phase:999,
 
-    visible:true
+    lastDetection:-1
 
   });
 
@@ -1433,7 +1468,7 @@ function createContact(
 
 
 /* =========================================================
-   EDITAR CONTATO
+   EDITAR
    ========================================================= */
 
 function editContact(i){
@@ -1482,8 +1517,12 @@ function editContact(i){
 }
 
 
+window.editC =
+  i => editContact(i);
+
+
 /* =========================================================
-   RENDERIZAR LISTA
+   LISTA DO MESTRE
    ========================================================= */
 
 function renderList(){
@@ -1523,7 +1562,7 @@ function renderList(){
                 ${
                   hidden
                     ? 'OCULTO'
-                    : 'VISÍVEL'
+                    : 'REVELADO'
                 }
 
               </span>
@@ -1532,8 +1571,7 @@ function renderList(){
               <div class="contact-name">
 
                 ${escapeHtml(
-                  q.name
-                  ||
+                  q.name ||
                   'Contato desconhecido'
                 )}
 
@@ -1543,8 +1581,7 @@ function renderList(){
               <div class="contact-type">
 
                 ${escapeHtml(
-                  q.type
-                  ||
+                  q.type ||
                   'Sinal'
                 )}
 
@@ -1688,7 +1725,7 @@ function escapeAttribute(value){
 
 
 /* =========================================================
-   VISIBILIDADE
+   REVELAR / OCULTAR
    ========================================================= */
 
 window.toggleVisibility =
@@ -1703,6 +1740,23 @@ window.toggleVisibility =
 
     contact.visible =
       contact.visible === false;
+
+
+    /*
+     * Se acabou de ocultar,
+     * o efeito visual do Mestre também
+     * é apagado.
+     */
+
+    if(!contact.visible){
+
+      contact.hit =
+        0;
+
+      contact.phase =
+        999;
+
+    }
 
 
     renderList();
@@ -1720,19 +1774,7 @@ window.toggleVisibility =
 
 
 /* =========================================================
-   EDITAR
-   ========================================================= */
-
-window.editC =
-  i => {
-
-    editContact(i);
-
-  };
-
-
-/* =========================================================
-   APAGAR
+   EXCLUIR
    ========================================================= */
 
 window.delC =
@@ -1782,12 +1824,9 @@ $('copyLink').onclick =
   async () => {
 
     const url =
-      location.origin
-      +
-      location.pathname
-      +
-      '?room='
-      +
+      location.origin +
+      location.pathname +
+      '?room=' +
       encodeURIComponent(room);
 
 
@@ -1796,6 +1835,7 @@ $('copyLink').onclick =
       await navigator.clipboard.writeText(
         url
       );
+
 
       showToast(
         'Link copiado'
@@ -1910,7 +1950,9 @@ $('decay').oninput =
 $('sound').onchange =
   e => {
 
-    if(e.target.checked){
+    if(
+      e.target.checked
+    ){
 
       activateAudio();
 
@@ -1989,7 +2031,7 @@ $('clear').onclick =
 
 
 /* =========================================================
-   CONTATOS ALEATÓRIOS
+   ALEATÓRIOS
    ========================================================= */
 
 $('random').onclick =
@@ -1999,8 +2041,8 @@ $('random').onclick =
 
 
     for(
-      let i = 0;
-      i < 7;
+      let i=0;
+      i<7;
       i++
     ){
 
@@ -2013,8 +2055,7 @@ $('random').onclick =
 
 
       const radius =
-        70
-        +
+        70 +
         Math.random()
         *
         280;
@@ -2033,7 +2074,7 @@ $('random').onclick =
       state.contacts.push({
 
         id:
-          String(i + 1)
+          String(i+1)
             .padStart(2,'0'),
 
         name:
@@ -2043,24 +2084,24 @@ $('random').onclick =
           info.type,
 
         x:
-          400
-          +
+          400 +
           Math.cos(angle)
           *
           radius,
 
         y:
-          400
-          +
+          400 +
           Math.sin(angle)
           *
           radius,
 
+        visible:true,
+
         hit:0,
 
-        phase:0,
+        phase:999,
 
-        visible:true
+        lastDetection:-1
 
       });
 
@@ -2111,7 +2152,7 @@ function pos(e){
 
 
 /* =========================================================
-   MOUSE NO SONAR
+   MOUSE
    ========================================================= */
 
 c.onmousedown =
@@ -2164,7 +2205,8 @@ c.onmousedown =
 
 
     /*
-     * Clique vazio cria contato.
+     * Clique em espaço vazio:
+     * cria contato.
      */
 
     if(!drag){
@@ -2187,8 +2229,7 @@ c.onmousemove =
   e => {
 
     if(
-      master
-      &&
+      master &&
       drag
     ){
 
@@ -2224,7 +2265,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   ÁUDIO — BOTÕES
+   BOTÕES DE SOM
    ========================================================= */
 
 $('activateSound').onclick =
@@ -2237,84 +2278,6 @@ $('testSound').onclick =
 
 $('soundHeader').onclick =
   activateAudio;
-
-
-/* =========================================================
-   DETECÇÃO DE CONTATO
-   ========================================================= */
-
-function detectContact(
-  contact,
-  angle,
-  distance
-){
-
-  if(
-    Math.abs(
-      Math.atan2(
-        Math.sin(
-          state.sweep -
-          angle
-        ),
-        Math.cos(
-          state.sweep -
-          angle
-        )
-      )
-    ) < .025
-    &&
-    distance < 350
-  ){
-
-    /*
-     * Evita detectar o mesmo contato
-     * várias vezes durante o mesmo giro.
-     */
-
-    const sweepNumber =
-      Math.floor(
-        state.sweep /
-        (Math.PI * 2)
-      );
-
-
-    if(
-      contact.lastDetection !==
-      sweepNumber
-    ){
-
-      contact.lastDetection =
-        sweepNumber;
-
-
-      contact.hit =
-        1;
-
-
-      contact.phase =
-        0;
-
-
-      /*
-       * Som:
-       * um ping por contato por varredura.
-       */
-
-      if(
-        $('sound')
-        &&
-        $('sound').checked
-      ){
-
-        playPing();
-
-      }
-
-    }
-
-  }
-
-}
 
 
 /* =========================================================
@@ -2334,35 +2297,28 @@ function draw(now){
     now;
 
 
-  /*
-   * MOVIMENTO DO SONAR
-   */
+  /* =======================================================
+     MOVIMENTO DA BARRA
+     ======================================================= */
 
-  if(
-    !state.paused
-  ){
+  if(!state.paused){
 
     state.sweep =
       (
-        state.sweep
-        +
-        dt
-        *
-        state.speed
-        *
+        state.sweep +
+        dt *
+        state.speed *
         .9
       )
       %
-      (
-        Math.PI * 2
-      );
+      (Math.PI * 2);
 
   }
 
 
-  /*
-   * FUNDO
-   */
+  /* =======================================================
+     FUNDO
+     ======================================================= */
 
   ctx.clearRect(
     0,
@@ -2393,9 +2349,9 @@ function draw(now){
   );
 
 
-  /*
-   * CÍRCULOS
-   */
+  /* =======================================================
+     CÍRCULOS
+     ======================================================= */
 
   ctx.strokeStyle =
     '#0b392f';
@@ -2406,54 +2362,49 @@ function draw(now){
 
 
   for(
-    let radius = 70;
-    radius <= 350;
-    radius += 70
+    let radius=70;
+    radius<=350;
+    radius+=70
   ){
 
     ctx.beginPath();
-
 
     ctx.arc(
       0,
       0,
       radius,
       0,
-      Math.PI * 2
+      Math.PI*2
     );
-
 
     ctx.stroke();
 
   }
 
 
-  /*
-   * GRADE
-   */
+  /* =======================================================
+     GRADE
+     ======================================================= */
 
   if(state.grid){
 
     for(
-      let angle = 0;
-      angle < Math.PI;
-      angle += Math.PI / 8
+      let angle=0;
+      angle<Math.PI;
+      angle+=Math.PI/8
     ){
 
       ctx.beginPath();
 
-
       ctx.moveTo(
-        -350 * Math.cos(angle),
-        -350 * Math.sin(angle)
+        -350*Math.cos(angle),
+        -350*Math.sin(angle)
       );
-
 
       ctx.lineTo(
-        350 * Math.cos(angle),
-        350 * Math.sin(angle)
+        350*Math.cos(angle),
+        350*Math.sin(angle)
       );
-
 
       ctx.stroke();
 
@@ -2462,12 +2413,11 @@ function draw(now){
   }
 
 
-  /*
-   * FEIXE
-   */
+  /* =======================================================
+     BARRA / FEIXE
+     ======================================================= */
 
   ctx.save();
-
 
   ctx.rotate(
     state.sweep
@@ -2501,7 +2451,6 @@ function draw(now){
 
   ctx.beginPath();
 
-
   ctx.moveTo(
     0,
     0
@@ -2519,7 +2468,6 @@ function draw(now){
 
   ctx.closePath();
 
-
   ctx.fill();
 
 
@@ -2533,18 +2481,15 @@ function draw(now){
 
   ctx.beginPath();
 
-
   ctx.moveTo(
     0,
     0
   );
 
-
   ctx.lineTo(
     350,
     0
   );
-
 
   ctx.stroke();
 
@@ -2552,45 +2497,53 @@ function draw(now){
   ctx.restore();
 
 
-  /*
-   * CONTATOS
-   */
+  /* =======================================================
+     CONTATOS
+     ======================================================= */
 
   state.contacts.forEach(
-    contact => {
+    q => {
 
       const angle =
         Math.atan2(
-          contact.y - 400,
-          contact.x - 400
+          q.y - 400,
+          q.x - 400
         );
 
 
       const distance =
         Math.hypot(
-          contact.x - 400,
-          contact.y - 400
+          q.x - 400,
+          q.y - 400
         );
 
 
-      /*
-       * MODO MESTRE
-       *
-       * Todos aparecem.
-       */
+      const delta =
+        Math.atan2(
+          Math.sin(
+            state.sweep -
+            angle
+          ),
+          Math.cos(
+            state.sweep -
+            angle
+          )
+        );
+
+
+      /* ===================================================
+         MODO MESTRE
+         =================================================== */
 
       if(master){
 
-        detectContact(
-          contact,
-          angle,
-          distance
-        );
-
-
         const hidden =
-          contact.visible === false;
+          q.visible === false;
 
+
+        /*
+         * O Mestre vê TODOS os contatos.
+         */
 
         ctx.globalAlpha =
           hidden
@@ -2618,15 +2571,13 @@ function draw(now){
 
         ctx.beginPath();
 
-
         ctx.arc(
-          contact.x - 400,
-          contact.y - 400,
+          q.x - 400,
+          q.y - 400,
           5,
           0,
-          Math.PI * 2
+          Math.PI*2
         );
-
 
         ctx.fill();
 
@@ -2636,12 +2587,6 @@ function draw(now){
 
 
         if(state.labels){
-
-          ctx.globalAlpha =
-            hidden
-              ? .55
-              : 1;
-
 
           ctx.font =
             '12px Consolas';
@@ -2655,11 +2600,12 @@ function draw(now){
 
           ctx.fillText(
             'C-' +
-            contact.id +
+            q.id +
             ' ' +
-            contact.name,
-            contact.x - 391,
-            contact.y - 408
+            (q.name ||
+             'Contato'),
+            q.x - 391,
+            q.y - 408
           );
 
         }
@@ -2674,84 +2620,129 @@ function draw(now){
       }
 
 
+      /* ===================================================
+         MODO JOGADOR
+         =================================================== */
+
       /*
-       * MODO JOGADOR
+       * Se o contato está no estado do jogador,
+       * ele foi REVELADO pelo Mestre.
        *
-       * Só existem aqui os contatos
-       * que o Mestre tornou públicos.
+       * Mas isso NÃO significa que ele está visível
+       * neste momento.
+       *
+       * Ele só aparece quando a barra passa.
        */
 
-      const delta =
-        Math.atan2(
-          Math.sin(
-            state.sweep -
-            angle
-          ),
-          Math.cos(
-            state.sweep -
-            angle
-          )
+
+      const sweepNumber =
+        Math.floor(
+          state.sweep /
+          (Math.PI * 2)
         );
 
 
+      /*
+       * DETECÇÃO
+       *
+       * A barra está passando pelo contato.
+       */
+
       if(
-        Math.abs(delta) < .025
-        &&
-        distance < 350
+        Math.abs(delta) < .035 &&
+        distance < 350 &&
+        q.lastDetection !== sweepNumber
       ){
 
+        q.lastDetection =
+          sweepNumber;
+
+
+        /*
+         * Começa um novo blip.
+         */
+
+        q.hit =
+          1;
+
+
+        q.phase =
+          0;
+
+
+        /*
+         * SOM
+         *
+         * Uma vez por contato
+         * por volta.
+         */
+
         if(
-          contact.lastDetection !==
-          Math.floor(
-            state.sweep /
-            (Math.PI * 2)
-          )
+          soundReady &&
+          $('sound') &&
+          $('sound').checked
         ){
 
-          contact.lastDetection =
-            Math.floor(
-              state.sweep /
-              (Math.PI * 2)
-            );
-
-
-          contact.hit =
-            1;
-
-
-          contact.phase =
-            0;
-
-
-          if(
-            $('sound')
-            &&
-            $('sound').checked
-          ){
-
-            playPing();
-
-          }
+          playPing();
 
         }
 
       }
 
 
-      contact.phase +=
-        dt;
+      /*
+       * O efeito visual é LOCAL.
+       *
+       * O Mestre não manda isso.
+       */
 
+      if(q.hit){
+
+        q.phase +=
+          dt;
+
+      }
+
+
+      /*
+       * Calcula quanto tempo resta
+       * para o blip desaparecer.
+       */
 
       const alpha =
-        contact.hit
+        q.hit
           ? Math.max(
               0,
               1 -
-              contact.phase /
+              q.phase /
               state.decay
             )
           : 0;
 
+
+      /*
+       * Quando o decay terminou,
+       * o ponto some.
+       */
+
+      if(
+        q.hit &&
+        q.phase >= state.decay
+      ){
+
+        q.hit =
+          0;
+
+        q.phase =
+          999;
+
+      }
+
+
+      /*
+       * Só desenha enquanto o blip
+       * estiver ativo.
+       */
 
       if(alpha > 0){
 
@@ -2773,15 +2764,13 @@ function draw(now){
 
         ctx.beginPath();
 
-
         ctx.arc(
-          contact.x - 400,
-          contact.y - 400,
+          q.x - 400,
+          q.y - 400,
           5,
           0,
-          Math.PI * 2
+          Math.PI*2
         );
-
 
         ctx.fill();
 
@@ -2791,8 +2780,7 @@ function draw(now){
 
 
         /*
-         * Se o Mestre habilitou nomes,
-         * o jogador recebe o nome público.
+         * Nome opcional.
          */
 
         if(state.labels){
@@ -2807,11 +2795,12 @@ function draw(now){
 
           ctx.fillText(
             'C-' +
-            contact.id +
+            q.id +
             ' ' +
-            contact.name,
-            contact.x - 391,
-            contact.y - 408
+            (q.name ||
+             'Contato'),
+            q.x - 391,
+            q.y - 408
           );
 
         }
@@ -2826,9 +2815,9 @@ function draw(now){
   );
 
 
-  /*
-   * CENTRO
-   */
+  /* =======================================================
+     CENTRO
+     ======================================================= */
 
   ctx.fillStyle =
     '#8fffd8';
@@ -2844,15 +2833,13 @@ function draw(now){
 
   ctx.beginPath();
 
-
   ctx.arc(
     0,
     0,
     4,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
-
 
   ctx.fill();
 
@@ -2864,9 +2851,9 @@ function draw(now){
   ctx.restore();
 
 
-  /*
-   * INFORMAÇÕES
-   */
+  /* =======================================================
+     HUD
+     ======================================================= */
 
   ctx.fillStyle =
     '#377e6c';
@@ -2894,15 +2881,9 @@ function draw(now){
   );
 
 
-  const contactCount =
-    master
-      ? state.contacts.length
-      : state.contacts.length;
-
-
   ctx.fillText(
     'CONTACTS  ' +
-    contactCount,
+    state.contacts.length,
     650,
     28
   );
@@ -2930,4 +2911,3 @@ requestAnimationFrame(
 
 </body>
 </html>
-```
