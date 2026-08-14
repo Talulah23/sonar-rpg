@@ -1,125 +1,2029 @@
+# SONAR // ABYSS — `index.html`
+
+```html
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SONAR // ABYSS</title>
+
 <style>
-:root{--bg:#020807;--panel:#03100d;--line:#16483d;--green:#8fffd8;--dim:#4d9b87}
-*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--green);font-family:Consolas,monospace}body{display:flex;flex-direction:column;overflow:hidden}
-header{height:58px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 15px;background:var(--panel)}
-h1{font-size:17px;letter-spacing:4px;margin-right:auto}button,input{font:inherit}button{background:#061914;color:var(--green);border:1px solid #23705e;padding:7px 10px;cursor:pointer}button:hover{background:#0a281f}
-#layout{display:flex;flex:1;min-height:0}.side{width:285px;border-right:1px solid var(--line);background:var(--panel);padding:14px;overflow:auto}.side.right{border-right:0;border-left:1px solid var(--line)}
-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-width:0}
-canvas{width:min(78vh,78vw);height:min(78vh,78vw);max-width:calc(100vw - 330px);max-height:calc(100vh - 75px);border:1px solid var(--line);box-shadow:0 0 35px #001f18}
-label{display:block;font-size:11px;color:#63bba5;margin:13px 0 5px}.row{display:flex;justify-content:space-between}.small{font-size:11px;color:var(--dim);line-height:1.5}
-#contacts{margin-top:10px}.contact{border:1px solid #0d332b;padding:7px;margin:6px 0;font-size:11px}.contact .actions{display:flex;gap:5px;margin-top:6px}.contact button{font-size:10px;padding:3px 6px}
-.badge{border:1px solid #23705e;padding:5px 7px;font-size:10px}.online{color:var(--green)}.offline{color:#a66}
-#join{position:absolute;inset:0;background:rgba(2,8,7,.96);display:flex;align-items:center;justify-content:center;z-index:5}.box{width:min(440px,90vw);border:1px solid #23705e;background:#03100d;padding:24px;box-shadow:0 0 45px #001f18}.box h2{letter-spacing:3px}.box input{width:100%;background:#020807;border:1px solid #23705e;color:var(--green);padding:10px;margin:7px 0 12px}.box button{width:100%}
-#toast{position:absolute;top:15px;left:50%;transform:translateX(-50%);padding:8px 12px;background:#061914;border:1px solid #23705e;display:none;z-index:4}
-#share{word-break:break-all;border:1px solid #16483d;padding:8px;font-size:10px;margin-top:8px}
-.hidden{display:none!important}
+:root{
+  --bg:#020807;
+  --panel:#03100d;
+  --line:#16483d;
+  --green:#8fffd8;
+  --dim:#4d9b87;
+  --yellow:#d8ff75;
+  --red:#ff7070;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  height:100%;
+  background:var(--bg);
+  color:var(--green);
+  font-family:Consolas,monospace
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  overflow:hidden
+}
+
+header{
+  height:58px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 15px;
+  background:var(--panel)
+}
+
+h1{
+  font-size:17px;
+  letter-spacing:4px;
+  margin-right:auto
+}
+
+button,input{
+  font:inherit
+}
+
+button{
+  background:#061914;
+  color:var(--green);
+  border:1px solid #23705e;
+  padding:7px 10px;
+  cursor:pointer
+}
+
+button:hover{
+  background:#0a281f
+}
+
+#layout{
+  display:flex;
+  flex:1;
+  min-height:0
+}
+
+.side{
+  width:300px;
+  border-right:1px solid var(--line);
+  background:var(--panel);
+  padding:14px;
+  overflow:auto
+}
+
+.side.right{
+  border-right:0;
+  border-left:1px solid var(--line)
+}
+
+main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  min-width:0
+}
+
+canvas{
+  width:min(78vh,78vw);
+  height:min(78vh,78vw);
+  max-width:calc(100vw - 345px);
+  max-height:calc(100vh - 75px);
+  border:1px solid var(--line);
+  box-shadow:0 0 35px #001f18
+}
+
+label{
+  display:block;
+  font-size:11px;
+  color:#63bba5;
+  margin:13px 0 5px
+}
+
+.row{
+  display:flex;
+  justify-content:space-between
+}
+
+.small{
+  font-size:11px;
+  color:var(--dim);
+  line-height:1.5
+}
+
+#contacts{
+  margin-top:10px
+}
+
+.contact{
+  border:1px solid #0d332b;
+  padding:8px;
+  margin:6px 0;
+  font-size:11px
+}
+
+.contact.hidden-contact{
+  border-color:#513b16
+}
+
+.contact .actions{
+  display:flex;
+  gap:5px;
+  margin-top:6px
+}
+
+.contact button{
+  font-size:10px;
+  padding:3px 6px
+}
+
+.visibility{
+  display:inline-block;
+  margin-left:5px;
+  font-size:9px;
+  padding:2px 4px;
+  border:1px solid #23705e
+}
+
+.visibility.off{
+  color:var(--yellow);
+  border-color:#806f2d
+}
+
+.badge{
+  border:1px solid #23705e;
+  padding:5px 7px;
+  font-size:10px
+}
+
+.online{
+  color:var(--green)
+}
+
+.offline{
+  color:#a66
+}
+
+#join{
+  position:absolute;
+  inset:0;
+  background:rgba(2,8,7,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5
+}
+
+.box{
+  width:min(440px,90vw);
+  border:1px solid #23705e;
+  background:#03100d;
+  padding:24px;
+  box-shadow:0 0 45px #001f18
+}
+
+.box h2{
+  letter-spacing:3px
+}
+
+.box input{
+  width:100%;
+  background:#020807;
+  border:1px solid #23705e;
+  color:var(--green);
+  padding:10px;
+  margin:7px 0 12px
+}
+
+.box button{
+  width:100%
+}
+
+#toast{
+  position:absolute;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:8px 12px;
+  background:#061914;
+  border:1px solid #23705e;
+  display:none;
+  z-index:4
+}
+
+#share{
+  word-break:break-all;
+  border:1px solid #16483d;
+  padding:8px;
+  font-size:10px;
+  margin-top:8px
+}
+
+.hidden{
+  display:none!important
+}
+
+.master-only-note{
+  border:1px solid #16483d;
+  padding:8px;
+  margin-top:10px;
+  font-size:10px;
+  line-height:1.5
+}
+
+.legend{
+  margin-top:10px;
+  font-size:10px;
+  line-height:1.7
+}
+
+.legend span{
+  display:block
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>SONAR // ABYSS</h1>
-<span id="roomBadge" class="badge">SEM SALA</span>
-<span id="status" class="badge offline">DESCONECTADO</span>
-<button id="copyLink" class="hidden">COPIAR LINK</button>
+  <h1>SONAR // ABYSS</h1>
+
+  <span id="roomBadge" class="badge">
+    SEM SALA
+  </span>
+
+  <span id="status" class="badge offline">
+    DESCONECTADO
+  </span>
+
+  <button id="copyLink" class="hidden">
+    COPIAR LINK
+  </button>
 </header>
+
 <div id="layout">
-<aside id="master" class="side hidden">
-<b>CONTROLE // MESTRE</b>
-<label>ALCANCE</label><input id="range" type="range" min="100" max="5000" step="100" value="1000">
-<div class="row"><span>RANGE</span><b id="rangeVal">1000 m</b></div>
-<label>VELOCIDADE DO SONAR</label><input id="speed" type="range" min=".1" max="2.5" step=".1" value=".7">
-<div class="row"><span>SPEED</span><b id="speedVal">0.7×</b></div>
-<label>DECAY DOS BLIPS</label><input id="decay" type="range" min=".3" max="5" step=".1" value="2.2">
-<div class="row"><span>DECAY</span><b id="decayVal">2.2 s</b></div>
-<label>OPÇÕES</label>
-<div><input id="sound" type="checkbox" checked> som</div>
-<div><input id="grid" type="checkbox" checked> grade</div>
-<div><input id="labels" type="checkbox"> IDs dos contatos</div>
-<div style="margin-top:12px;display:flex;gap:6px"><button id="pause">PAUSAR</button><button id="clear">LIMPAR</button></div>
-<button id="random" style="margin-top:6px;width:100%">CONTATOS ALEATÓRIOS</button>
-<label>LINK DOS JOGADORES</label><div id="share">Criando sala...</div>
-<p class="small">Clique no sonar para criar contato. Arraste um contato para movê-lo. O estado é enviado aos jogadores em tempo real.</p>
-<div id="contacts"></div>
-</aside>
-<main><canvas id="c" width="800" height="800"></canvas><div id="toast"></div>
-<div id="join"><div class="box"><h2>SONAR // ABYSS</h2><p class="small">Entre em uma sala para visualizar o sonar.</p><input id="roomInput" placeholder="Código da sala (ex.: ABYSS-4821)"><button id="joinBtn">ENTRAR COMO JOGADOR</button><p class="small">Se você é o mestre, use <b>?master=1</b> no endereço.</p></div></div></main>
+
+  <!-- =========================
+       MODO MESTRE
+       ========================= -->
+  <aside id="master" class="side hidden">
+
+    <b>CONTROLE // MESTRE</b>
+
+    <label>ALCANCE</label>
+    <input
+      id="range"
+      type="range"
+      min="100"
+      max="5000"
+      step="100"
+      value="1000"
+    >
+
+    <div class="row">
+      <span>RANGE</span>
+      <b id="rangeVal">1000 m</b>
+    </div>
+
+    <label>VELOCIDADE DO SONAR</label>
+    <input
+      id="speed"
+      type="range"
+      min=".1"
+      max="2.5"
+      step=".1"
+      value=".7"
+    >
+
+    <div class="row">
+      <span>SPEED</span>
+      <b id="speedVal">0.7×</b>
+    </div>
+
+    <label>DECAY DOS BLIPS DOS JOGADORES</label>
+    <input
+      id="decay"
+      type="range"
+      min=".3"
+      max="5"
+      step=".1"
+      value="2.2"
+    >
+
+    <div class="row">
+      <span>DECAY</span>
+      <b id="decayVal">2.2 s</b>
+    </div>
+
+    <label>OPÇÕES</label>
+
+    <div>
+      <input id="sound" type="checkbox" checked>
+      som
+    </div>
+
+    <div>
+      <input id="grid" type="checkbox" checked>
+      grade
+    </div>
+
+    <div>
+      <input id="labels" type="checkbox">
+      IDs dos contatos
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:6px">
+      <button id="pause">PAUSAR</button>
+      <button id="clear">LIMPAR</button>
+    </div>
+
+    <button
+      id="random"
+      style="margin-top:6px;width:100%"
+    >
+      CONTATOS ALEATÓRIOS
+    </button>
+
+    <label>LINK DOS JOGADORES</label>
+
+    <div id="share">
+      Criando sala...
+    </div>
+
+    <div class="master-only-note">
+      <b>MODO MESTRE</b><br>
+      Todos os contatos permanecem visíveis para você.
+      O DECAY afeta apenas os jogadores.
+      Use VISÍVEL/OCULTO para controlar o que eles podem detectar.
+    </div>
+
+    <div class="legend">
+      <span>● <b>VISÍVEL</b> — jogador recebe o contato</span>
+      <span>● <b>OCULTO</b> — somente o Mestre vê</span>
+    </div>
+
+    <p class="small">
+      Clique no sonar para criar contato.
+      Arraste um contato para movê-lo.
+      O estado público é enviado aos jogadores em tempo real.
+    </p>
+
+    <div id="contacts"></div>
+
+  </aside>
+
+  <!-- =========================
+       SONAR
+       ========================= -->
+  <main>
+
+    <canvas
+      id="c"
+      width="800"
+      height="800"
+    ></canvas>
+
+    <div id="toast"></div>
+
+    <!-- =========================
+         ENTRADA NA SALA
+         ========================= -->
+    <div id="join">
+
+      <div class="box">
+
+        <h2>SONAR // ABYSS</h2>
+
+        <p class="small">
+          Entre em uma sala para visualizar o sonar.
+        </p>
+
+        <input
+          id="roomInput"
+          placeholder="Código da sala (ex.: ABYSS-4821)"
+        >
+
+        <button id="joinBtn">
+          ENTRAR COMO JOGADOR
+        </button>
+
+        <p class="small">
+          Se você é o mestre, use
+          <b>?master=1</b>
+          no endereço.
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
 </div>
+
 <script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = localStorage.getItem('sonar_supabase_url') || 'COLOQUE_SUA_URL_AQUI';
-const SUPABASE_KEY = localStorage.getItem('sonar_supabase_key') || 'COLOQUE_SUA_CHAVE_PUBLICA_AQUI';
-const configured = SUPABASE_URL.startsWith('http') && !SUPABASE_KEY.startsWith('COLOQUE_');
-const supabase = configured ? createClient(SUPABASE_URL,SUPABASE_KEY) : null;
+/* =========================================================
+   SUPABASE
+   ========================================================= */
 
-const $=id=>document.getElementById(id), c=$('c'), ctx=c.getContext('2d');
-let state={contacts:[],sweep:0,range:1000,speed:.7,decay:2.2,paused:false,grid:true,labels:false,depth:'???'};
-let room='', master=false, channel=null, last=performance.now(),drag=null,audio=null;
+import {
+  createClient
+} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-function randomRoom(){return 'ABYSS-'+Math.floor(1000+Math.random()*9000)}
-function isMaster(){return new URLSearchParams(location.search).get('master')==='1'}
-function showToast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1800)}
+
+const SUPABASE_URL =
+  localStorage.getItem('sonar_supabase_url')
+  || 'COLOQUE_SUA_URL_AQUI';
+
+const SUPABASE_KEY =
+  localStorage.getItem('sonar_supabase_key')
+  || 'COLOQUE_SUA_CHAVE_PUBLICA_AQUI';
+
+const configured =
+  SUPABASE_URL.startsWith('http')
+  &&
+  !SUPABASE_KEY.startsWith('COLOQUE_');
+
+const supabase =
+  configured
+    ? createClient(SUPABASE_URL, SUPABASE_KEY)
+    : null;
+
+
+/* =========================================================
+   ELEMENTOS
+   ========================================================= */
+
+const $ = id => document.getElementById(id);
+
+const c = $('c');
+const ctx = c.getContext('2d');
+
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+let state = {
+
+  contacts: [],
+
+  sweep: 0,
+
+  range: 1000,
+
+  speed: .7,
+
+  decay: 2.2,
+
+  paused: false,
+
+  grid: true,
+
+  labels: false,
+
+  depth: '???'
+
+};
+
+
+let room = '';
+
+let master = false;
+
+let channel = null;
+
+let last = performance.now();
+
+let drag = null;
+
+let audio = null;
+
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+
+function randomRoom(){
+
+  return 'ABYSS-' +
+    Math.floor(
+      1000 + Math.random() * 9000
+    );
+
+}
+
+
+function isMaster(){
+
+  return new URLSearchParams(
+    location.search
+  ).get('master') === '1';
+
+}
+
+
+function showToast(text){
+
+  $('toast').textContent = text;
+
+  $('toast').style.display = 'block';
+
+  setTimeout(() => {
+
+    $('toast').style.display = 'none';
+
+  }, 1800);
+
+}
+
+
+/* =========================================================
+   CRÉDITOS SUPABASE
+   ========================================================= */
+
 function saveCreds(){
- let u=prompt('Supabase Project URL (ex.: https://xxxx.supabase.co)'); if(!u)return;
- let k=prompt('Supabase Publishable Key (sb_publishable_...)'); if(!k)return;
- localStorage.setItem('sonar_supabase_url',u.trim());localStorage.setItem('sonar_supabase_key',k.trim());location.reload()
+
+  let url = prompt(
+    'Supabase Project URL (ex.: https://xxxx.supabase.co)'
+  );
+
+  if(!url) return;
+
+
+  let key = prompt(
+    'Supabase Publishable Key (sb_publishable_...)'
+  );
+
+  if(!key) return;
+
+
+  localStorage.setItem(
+    'sonar_supabase_url',
+    url.trim()
+  );
+
+  localStorage.setItem(
+    'sonar_supabase_key',
+    key.trim()
+  );
+
+
+  location.reload();
+
 }
+
+
+/* =========================================================
+   CONFIGURAÇÃO INICIAL
+   ========================================================= */
+
 if(!configured){
- $('join').querySelector('.box').innerHTML='<h2>CONFIGURAÇÃO</h2><p class="small">Antes de usar, configure as credenciais do Supabase neste navegador.</p><button id="cred">CONFIGURAR SUPABASE</button><p class="small">Você usará a URL do projeto e a Publishable Key do Supabase.</p>';
- $('cred').onclick=saveCreds;
-}else{
- room=new URLSearchParams(location.search).get('room')||localStorage.getItem('sonar_room')||'';
- master=isMaster();
- if(master&&!room)room=randomRoom();
- if(room)connect();
- else $('join').classList.remove('hidden');
+
+  $('join').querySelector('.box').innerHTML = `
+
+    <h2>CONFIGURAÇÃO</h2>
+
+    <p class="small">
+      Antes de usar, configure as credenciais
+      do Supabase neste navegador.
+    </p>
+
+    <button id="cred">
+      CONFIGURAR SUPABASE
+    </button>
+
+    <p class="small">
+      Você usará a URL do projeto e a
+      Publishable Key do Supabase.
+    </p>
+
+  `;
+
+  $('cred').onclick = saveCreds;
+
 }
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+
+else{
+
+  room =
+    new URLSearchParams(location.search)
+      .get('room')
+    ||
+    localStorage.getItem('sonar_room')
+    ||
+    '';
+
+  master = isMaster();
+
+
+  if(master && !room){
+
+    room = randomRoom();
+
+  }
+
+
+  if(room){
+
+    connect();
+
+  }
+
+  else{
+
+    $('join').classList.remove('hidden');
+
+  }
+
+}
+
+
+/* =========================================================
+   CONEXÃO COM A SALA
+   ========================================================= */
 
 async function connect(){
- localStorage.setItem('sonar_room',room); $('roomBadge').textContent='SALA '+room;
- $('join').classList.add('hidden');
- if(master){$('master').classList.remove('hidden');$('copyLink').classList.remove('hidden');let url=location.origin+location.pathname+'?room='+encodeURIComponent(room);$('share').textContent=url}
- channel=supabase.channel('sonar:'+room,{config:{broadcast:{ack:true}}})
- .on('broadcast',{event:'state'},({payload})=>{if(!master&&payload?.state){state=payload.state}})
- .on('presence',{event:'sync'},()=>{})
- .subscribe(async s=>{if(s==='SUBSCRIBED'){$('status').textContent='CONECTADO';$('status').classList.remove('offline');if(master)sendState()}})
+
+  localStorage.setItem(
+    'sonar_room',
+    room
+  );
+
+
+  $('roomBadge').textContent =
+    'SALA ' + room;
+
+  $('join').classList.add('hidden');
+
+
+  /*
+   * CONFIGURAÇÃO DO MODO MESTRE
+   */
+
+  if(master){
+
+    $('master').classList.remove('hidden');
+
+    $('copyLink').classList.remove('hidden');
+
+
+    const url =
+      location.origin
+      +
+      location.pathname
+      +
+      '?room='
+      +
+      encodeURIComponent(room);
+
+
+    $('share').textContent = url;
+
+  }
+
+
+  /*
+   * CANAL SUPABASE
+   */
+
+  channel =
+    supabase.channel(
+      'sonar:' + room,
+      {
+        config:{
+          broadcast:{
+            ack:true
+          }
+        }
+      }
+    );
+
+
+  /*
+   * RECEBER ESTADO PÚBLICO
+   *
+   * IMPORTANTE:
+   * Jogadores não recebem os contatos
+   * ocultos.
+   */
+
+  channel.on(
+    'broadcast',
+    {
+      event:'state'
+    },
+    ({payload}) => {
+
+      if(
+        !master
+        &&
+        payload?.state
+      ){
+
+        state = payload.state;
+
+        updateControls();
+
+      }
+
+    }
+  );
+
+
+  /*
+   * CONECTAR
+   */
+
+  channel.subscribe(
+    async status => {
+
+      if(status === 'SUBSCRIBED'){
+
+        $('status').textContent =
+          'CONECTADO';
+
+        $('status')
+          .classList
+          .remove('offline');
+
+
+        /*
+         * Só o Mestre envia o estado.
+         */
+
+        if(master){
+
+          sendState();
+
+        }
+
+      }
+
+    }
+  );
+
 }
-async function sendState(){if(channel&&master)await channel.send({type:'broadcast',event:'state',payload:{state}})}
-function addContact(x,y){state.contacts.push({id:Date.now().toString(36).slice(-4),x,y,hit:0,phase:0});renderList();sendState()}
-function renderList(){$('contacts').innerHTML=state.contacts.map((q,i)=>`<div class="contact"><b>CONTATO ${q.id}</b><div class="small">x:${Math.round(q.x-400)} y:${Math.round(q.y-400)}</div><div class="actions"><button onclick="window.moveC(${i})">MOVER</button><button onclick="window.delC(${i})">X</button></div></div>`).join('')}
-window.delC=i=>{state.contacts.splice(i,1);renderList();sendState()}
-window.moveC=i=>{showToast('Arraste o contato '+state.contacts[i].id+' no sonar')}
-$('copyLink').onclick=async()=>{let u=location.origin+location.pathname+'?room='+encodeURIComponent(room);await navigator.clipboard.writeText(u);showToast('Link copiado')}
-$('joinBtn').onclick=()=>{let r=$('roomInput').value.trim().toUpperCase();if(r){room=r;connect()}}
-$('range').oninput=e=>{state.range=+e.target.value;$('rangeVal').textContent=state.range+' m';sendState()}
-$('speed').oninput=e=>{state.speed=+e.target.value;$('speedVal').textContent=state.speed+'×';sendState()}
-$('decay').oninput=e=>{state.decay=+e.target.value;$('decayVal').textContent=state.decay+' s';sendState()}
-$('sound').onchange=()=>{};$('grid').onchange=e=>{state.grid=e.target.checked;sendState()};$('labels').onchange=e=>{state.labels=e.target.checked;sendState()}
-$('pause').onclick=()=>{state.paused=!state.paused;$('pause').textContent=state.paused?'INICIAR':'PAUSAR';sendState()}
-$('clear').onclick=()=>{state.contacts=[];renderList();sendState()}
-$('random').onclick=()=>{state.contacts=[];for(let i=0;i<7;i++){let a=Math.random()*Math.PI*2,r=70+Math.random()*280;state.contacts.push({id:String(i+1).padStart(2,'0'),x:400+Math.cos(a)*r,y:400+Math.sin(a)*r,hit:0,phase:0})}renderList();sendState()}
 
-function pos(e){let r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*800/r.width,y:(e.clientY-r.top)*800/r.height}}
-c.onmousedown=e=>{if(!master)return;let p=pos(e),best=null,bd=22;state.contacts.forEach(q=>{let d=Math.hypot(q.x-p.x,q.y-p.y);if(d<bd){best=q;bd=d}});drag=best;if(!drag)addContact(p.x,p.y)}
-c.onmousemove=e=>{if(master&&drag){let p=pos(e);drag.x=p.x;drag.y=p.y;renderList();sendState()}}
-onmouseup=()=>drag=null;
 
-function ping(){if(!master||!$('sound').checked)return;try{audio??=new AudioContext();let o=audio.createOscillator(),g=audio.createGain();o.frequency.value=700;o.type='sine';g.gain.setValueAtTime(.07,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.18);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.18)}catch{}}
+/* =========================================================
+   ESTADO PÚBLICO
+   ========================================================= */
+
+function getPublicState(){
+
+  return {
+
+    sweep: state.sweep,
+
+    range: state.range,
+
+    speed: state.speed,
+
+    decay: state.decay,
+
+    paused: state.paused,
+
+    grid: state.grid,
+
+    labels: state.labels,
+
+    depth: state.depth,
+
+    /*
+     * AQUI ESTÁ A DIFERENÇA IMPORTANTE:
+     *
+     * somente contatos visíveis são enviados.
+     */
+
+    contacts:
+      state.contacts
+        .filter(contact => contact.visible !== false)
+        .map(contact => ({
+
+          id: contact.id,
+
+          x: contact.x,
+
+          y: contact.y,
+
+          hit: contact.hit,
+
+          phase: contact.phase,
+
+          visible: true
+
+        }))
+
+  };
+
+}
+
+
+/* =========================================================
+   ENVIAR ESTADO
+   ========================================================= */
+
+async function sendState(){
+
+  if(
+    channel
+    &&
+    master
+  ){
+
+    await channel.send({
+
+      type:'broadcast',
+
+      event:'state',
+
+      payload:{
+
+        state:getPublicState()
+
+      }
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   CRIAR CONTATO
+   ========================================================= */
+
+function addContact(x,y){
+
+  state.contacts.push({
+
+    id:
+      Date.now()
+        .toString(36)
+        .slice(-4),
+
+    x,
+
+    y,
+
+    hit:0,
+
+    phase:0,
+
+    /*
+     * NOVOS CONTATOS COMEÇAM VISÍVEIS.
+     * O Mestre pode ocultá-los imediatamente.
+     */
+
+    visible:true
+
+  });
+
+
+  renderList();
+
+  sendState();
+
+}
+
+
+/* =========================================================
+   LISTA DE CONTATOS DO MESTRE
+   ========================================================= */
+
+function renderList(){
+
+  $('contacts').innerHTML =
+    state.contacts.map((q,i) => {
+
+      const hidden =
+        q.visible === false;
+
+
+      return `
+
+        <div class="contact ${hidden ? 'hidden-contact' : ''}">
+
+          <b>
+            CONTATO ${q.id}
+          </b>
+
+          <span
+            class="visibility ${hidden ? 'off' : ''}"
+          >
+            ${hidden ? 'OCULTO' : 'VISÍVEL'}
+          </span>
+
+          <div class="small">
+            x:${Math.round(q.x - 400)}
+            y:${Math.round(q.y - 400)}
+          </div>
+
+          <div class="actions">
+
+            <button
+              onclick="window.toggleVisibility(${i})"
+            >
+              ${hidden ? 'REVELAR' : 'OCULTAR'}
+            </button>
+
+            <button
+              onclick="window.moveC(${i})"
+            >
+              MOVER
+            </button>
+
+            <button
+              onclick="window.delC(${i})"
+            >
+              X
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+}
+
+
+/* =========================================================
+   OCULTAR / REVELAR
+   ========================================================= */
+
+window.toggleVisibility = i => {
+
+  const contact =
+    state.contacts[i];
+
+  if(!contact) return;
+
+
+  contact.visible =
+    contact.visible === false;
+
+
+  renderList();
+
+  sendState();
+
+
+  if(contact.visible){
+
+    showToast(
+      'Contato ' +
+      contact.id +
+      ' revelado aos jogadores'
+    );
+
+  }
+
+  else{
+
+    showToast(
+      'Contato ' +
+      contact.id +
+      ' ocultado dos jogadores'
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   APAGAR
+   ========================================================= */
+
+window.delC = i => {
+
+  state.contacts.splice(
+    i,
+    1
+  );
+
+  renderList();
+
+  sendState();
+
+};
+
+
+/* =========================================================
+   MOVER
+   ========================================================= */
+
+window.moveC = i => {
+
+  const contact =
+    state.contacts[i];
+
+  if(!contact) return;
+
+
+  showToast(
+    'Arraste o contato ' +
+    contact.id +
+    ' no sonar'
+  );
+
+};
+
+
+/* =========================================================
+   COPIAR LINK
+   ========================================================= */
+
+$('copyLink').onclick =
+  async () => {
+
+    const url =
+      location.origin
+      +
+      location.pathname
+      +
+      '?room='
+      +
+      encodeURIComponent(room);
+
+
+    await navigator.clipboard.writeText(
+      url
+    );
+
+
+    showToast(
+      'Link copiado'
+    );
+
+  };
+
+
+/* =========================================================
+   ENTRAR COMO JOGADOR
+   ========================================================= */
+
+$('joinBtn').onclick = () => {
+
+  const r =
+    $('roomInput')
+      .value
+      .trim()
+      .toUpperCase();
+
+
+  if(r){
+
+    room = r;
+
+    master = false;
+
+    connect();
+
+  }
+
+};
+
+
+/* =========================================================
+   CONTROLES
+   ========================================================= */
+
+$('range').oninput = e => {
+
+  state.range =
+    +e.target.value;
+
+  $('rangeVal').textContent =
+    state.range + ' m';
+
+  sendState();
+
+};
+
+
+$('speed').oninput = e => {
+
+  state.speed =
+    +e.target.value;
+
+  $('speedVal').textContent =
+    state.speed + '×';
+
+  sendState();
+
+};
+
+
+$('decay').oninput = e => {
+
+  state.decay =
+    +e.target.value;
+
+  $('decayVal').textContent =
+    state.decay + ' s';
+
+  sendState();
+
+};
+
+
+$('sound').onchange =
+  () => {};
+
+
+$('grid').onchange = e => {
+
+  state.grid =
+    e.target.checked;
+
+  sendState();
+
+};
+
+
+$('labels').onchange = e => {
+
+  state.labels =
+    e.target.checked;
+
+  sendState();
+
+};
+
+
+/* =========================================================
+   PAUSAR
+   ========================================================= */
+
+$('pause').onclick = () => {
+
+  state.paused =
+    !state.paused;
+
+
+  $('pause').textContent =
+    state.paused
+      ? 'INICIAR'
+      : 'PAUSAR';
+
+
+  sendState();
+
+};
+
+
+/* =========================================================
+   LIMPAR
+   ========================================================= */
+
+$('clear').onclick = () => {
+
+  state.contacts = [];
+
+  renderList();
+
+  sendState();
+
+};
+
+
+/* =========================================================
+   CONTATOS ALEATÓRIOS
+   ========================================================= */
+
+$('random').onclick = () => {
+
+  state.contacts = [];
+
+
+  for(let i=0;i<7;i++){
+
+    const a =
+      Math.random()
+      * Math.PI
+      * 2;
+
+
+    const r =
+      70
+      +
+      Math.random()
+      * 280;
+
+
+    state.contacts.push({
+
+      id:
+        String(i + 1)
+          .padStart(2,'0'),
+
+      x:
+        400
+        +
+        Math.cos(a)
+        * r,
+
+      y:
+        400
+        +
+        Math.sin(a)
+        * r,
+
+      hit:0,
+
+      phase:0,
+
+      /*
+       * Contatos aleatórios começam visíveis.
+       */
+
+      visible:true
+
+    });
+
+  }
+
+
+  renderList();
+
+  sendState();
+
+};
+
+
+/* =========================================================
+   POSIÇÃO DO MOUSE
+   ========================================================= */
+
+function pos(e){
+
+  const r =
+    c.getBoundingClientRect();
+
+
+  return {
+
+    x:
+      (e.clientX - r.left)
+      * 800
+      / r.width,
+
+    y:
+      (e.clientY - r.top)
+      * 800
+      / r.height
+
+  };
+
+}
+
+
+/* =========================================================
+   CLIQUE / ARRASTAR NO SONAR
+   ========================================================= */
+
+c.onmousedown = e => {
+
+  if(!master) return;
+
+
+  const p =
+    pos(e);
+
+
+  let best = null;
+
+  let bd = 22;
+
+
+  state.contacts.forEach(q => {
+
+    const d =
+      Math.hypot(
+        q.x - p.x,
+        q.y - p.y
+      );
+
+
+    if(d < bd){
+
+      best = q;
+
+      bd = d;
+
+    }
+
+  });
+
+
+  /*
+   * Se clicou em um contato:
+   * começa a arrastá-lo.
+   */
+
+  drag = best;
+
+
+  /*
+   * Se não clicou em contato:
+   * cria um novo.
+   */
+
+  if(!drag){
+
+    addContact(
+      p.x,
+      p.y
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   ARRASTAR
+   ========================================================= */
+
+c.onmousemove = e => {
+
+  if(
+    master
+    &&
+    drag
+  ){
+
+    const p =
+      pos(e);
+
+
+    drag.x = p.x;
+
+    drag.y = p.y;
+
+
+    renderList();
+
+    sendState();
+
+  }
+
+};
+
+
+onmouseup = () => {
+
+  drag = null;
+
+};
+
+
+/* =========================================================
+   SOM DO SONAR
+   ========================================================= */
+
+function ping(){
+
+  if(
+    !master
+    ||
+    !$('sound').checked
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    audio ??=
+      new AudioContext();
+
+
+    const o =
+      audio.createOscillator();
+
+    const g =
+      audio.createGain();
+
+
+    o.frequency.value =
+      700;
+
+    o.type =
+      'sine';
+
+
+    g.gain.setValueAtTime(
+      .07,
+      audio.currentTime
+    );
+
+
+    g.gain.exponentialRampToValueAtTime(
+      .001,
+      audio.currentTime + .18
+    );
+
+
+    o.connect(g);
+
+    g.connect(
+      audio.destination
+    );
+
+
+    o.start();
+
+    o.stop(
+      audio.currentTime + .18
+    );
+
+  }
+
+  catch{}
+
+}
+
+
+/* =========================================================
+   ATUALIZAR CONTROLES
+   ========================================================= */
+
+function updateControls(){
+
+  if(master) return;
+
+
+  /*
+   * Os jogadores recebem apenas
+   * as configurações públicas.
+   */
+
+}
+
+
+/* =========================================================
+   DESENHAR SONAR
+   ========================================================= */
+
 function draw(now){
- let dt=Math.min(.05,(now-last)/1000);last=now;if(!state.paused)state.sweep=(state.sweep+dt*state.speed*.9)%(Math.PI*2);
- ctx.clearRect(0,0,800,800);ctx.fillStyle='#020807';ctx.fillRect(0,0,800,800);ctx.save();ctx.translate(400,400);
- ctx.strokeStyle='#0b392f';ctx.lineWidth=1;for(let r=70;r<=350;r+=70){ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke()}
- if(state.grid)for(let a=0;a<Math.PI;a+=Math.PI/8){ctx.beginPath();ctx.moveTo(-350*Math.cos(a),-350*Math.sin(a));ctx.lineTo(350*Math.cos(a),350*Math.sin(a));ctx.stroke()}
- ctx.save();ctx.rotate(state.sweep);let g=ctx.createLinearGradient(0,0,330,0);g.addColorStop(0,'rgba(80,255,205,.35)');g.addColorStop(1,'rgba(80,255,205,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,350,-.025,.12);ctx.closePath();ctx.fill();ctx.strokeStyle='rgba(120,255,220,.9)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(350,0);ctx.stroke();ctx.restore();
- state.contacts.forEach(q=>{let a=Math.atan2(q.y-400,q.x-400),d=Math.hypot(q.x-400,q.y-400),delta=Math.atan2(Math.sin(state.sweep-a),Math.cos(state.sweep-a));if(Math.abs(delta)<.025&&d<350){q.hit=1;q.phase=0;if(master)ping()}q.phase+=dt;let al=q.hit?Math.max(0,1-q.phase/state.decay):0;if(al>0){ctx.globalAlpha=al;ctx.fillStyle='#8fffd8';ctx.shadowColor='#8fffd8';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(q.x-400,q.y-400,5,0,7);ctx.fill();ctx.shadowBlur=0;if(state.labels&&master){ctx.font='12px Consolas';ctx.fillText('C-'+q.id,q.x-391,q.y-408)}ctx.globalAlpha=1}});
- ctx.fillStyle='#8fffd8';ctx.shadowColor='#8fffd8';ctx.shadowBlur=8;ctx.beginPath();ctx.arc(0,0,4,0,7);ctx.fill();ctx.shadowBlur=0;ctx.restore();
- ctx.fillStyle='#377e6c';ctx.font='12px Consolas';ctx.fillText('RANGE  '+state.range+' m',18,28);ctx.fillText('DEPTH  '+state.depth+' m',18,48);ctx.fillText('CONTACTS  '+state.contacts.length,650,28);
- requestAnimationFrame(draw)
+
+  const dt =
+    Math.min(
+      .05,
+      (now - last) / 1000
+    );
+
+
+  last = now;
+
+
+  /*
+   * O movimento do sonar continua
+   * sincronizado com o estado.
+   */
+
+  if(!state.paused){
+
+    state.sweep =
+      (
+        state.sweep
+        +
+        dt
+        *
+        state.speed
+        *
+        .9
+      )
+      %
+      (Math.PI * 2);
+
+  }
+
+
+  /*
+   * FUNDO
+   */
+
+  ctx.clearRect(
+    0,
+    0,
+    800,
+    800
+  );
+
+
+  ctx.fillStyle =
+    '#020807';
+
+  ctx.fillRect(
+    0,
+    0,
+    800,
+    800
+  );
+
+
+  ctx.save();
+
+  ctx.translate(
+    400,
+    400
+  );
+
+
+  /*
+   * CÍRCULOS
+   */
+
+  ctx.strokeStyle =
+    '#0b392f';
+
+  ctx.lineWidth = 1;
+
+
+  for(
+    let r=70;
+    r<=350;
+    r+=70
+  ){
+
+    ctx.beginPath();
+
+    ctx.arc(
+      0,
+      0,
+      r,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+
+  }
+
+
+  /*
+   * GRADE
+   */
+
+  if(state.grid){
+
+    for(
+      let a=0;
+      a<Math.PI;
+      a+=Math.PI/8
+    ){
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        -350 * Math.cos(a),
+        -350 * Math.sin(a)
+      );
+
+      ctx.lineTo(
+        350 * Math.cos(a),
+        350 * Math.sin(a)
+      );
+
+      ctx.stroke();
+
+    }
+
+  }
+
+
+  /*
+   * FEIXE DO SONAR
+   */
+
+  ctx.save();
+
+  ctx.rotate(
+    state.sweep
+  );
+
+
+  const g =
+    ctx.createLinearGradient(
+      0,
+      0,
+      330,
+      0
+    );
+
+
+  g.addColorStop(
+    0,
+    'rgba(80,255,205,.35)'
+  );
+
+
+  g.addColorStop(
+    1,
+    'rgba(80,255,205,0)'
+  );
+
+
+  ctx.fillStyle = g;
+
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    0,
+    0
+  );
+
+  ctx.arc(
+    0,
+    0,
+    350,
+    -.025,
+    .12
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  ctx.strokeStyle =
+    'rgba(120,255,220,.9)';
+
+  ctx.lineWidth = 2;
+
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    0,
+    0
+  );
+
+  ctx.lineTo(
+    350,
+    0
+  );
+
+  ctx.stroke();
+
+
+  ctx.restore();
+
+
+  /*
+   * CONTATOS
+   */
+
+  state.contacts.forEach(q => {
+
+    const a =
+      Math.atan2(
+        q.y - 400,
+        q.x - 400
+      );
+
+
+    const d =
+      Math.hypot(
+        q.x - 400,
+        q.y - 400
+      );
+
+
+    /*
+     * =====================================================
+     * MODO MESTRE
+     * =====================================================
+     *
+     * O Mestre SEMPRE vê os pontos.
+     * O decay NÃO apaga os contatos do Mestre.
+     */
+
+    if(master){
+
+      const hidden =
+        q.visible === false;
+
+
+      ctx.globalAlpha =
+        hidden
+          ? .35
+          : 1;
+
+
+      ctx.fillStyle =
+        hidden
+          ? '#d8a84a'
+          : '#8fffd8';
+
+
+      ctx.shadowColor =
+        hidden
+          ? '#d8a84a'
+          : '#8fffd8';
+
+
+      ctx.shadowBlur =
+        hidden
+          ? 8
+          : 18;
+
+
+      ctx.beginPath();
+
+      ctx.arc(
+        q.x - 400,
+        q.y - 400,
+        5,
+        0,
+        7
+      );
+
+      ctx.fill();
+
+
+      ctx.shadowBlur = 0;
+
+
+      /*
+       * ID DO CONTATO
+       */
+
+      if(state.labels){
+
+        ctx.globalAlpha =
+          hidden
+            ? .55
+            : 1;
+
+
+        ctx.font =
+          '12px Consolas';
+
+
+        ctx.fillStyle =
+          hidden
+            ? '#d8a84a'
+            : '#8fffd8';
+
+
+        ctx.fillText(
+          'C-' + q.id,
+          q.x - 391,
+          q.y - 408
+        );
+
+      }
+
+
+      ctx.globalAlpha = 1;
+
+
+      return;
+
+    }
+
+
+    /*
+     * =====================================================
+     * MODO JOGADOR
+     * =====================================================
+     *
+     * Aqui só existem os contatos que
+     * o Mestre marcou como visíveis.
+     */
+
+    const delta =
+      Math.atan2(
+        Math.sin(
+          state.sweep - a
+        ),
+        Math.cos(
+          state.sweep - a
+        )
+      );
+
+
+    /*
+     * O contato é "detectado"
+     * quando o feixe passa por ele.
+     */
+
+    if(
+      Math.abs(delta) < .025
+      &&
+      d < 350
+    ){
+
+      q.hit = 1;
+
+      q.phase = 0;
+
+    }
+
+
+    q.phase += dt;
+
+
+    const al =
+      q.hit
+        ? Math.max(
+            0,
+            1 - q.phase / state.decay
+          )
+        : 0;
+
+
+    if(al > 0){
+
+      ctx.globalAlpha = al;
+
+      ctx.fillStyle =
+        '#8fffd8';
+
+      ctx.shadowColor =
+        '#8fffd8';
+
+      ctx.shadowBlur = 18;
+
+
+      ctx.beginPath();
+
+      ctx.arc(
+        q.x - 400,
+        q.y - 400,
+        5,
+        0,
+        7
+      );
+
+      ctx.fill();
+
+
+      ctx.shadowBlur = 0;
+
+
+      /*
+       * Jogadores NÃO recebem os IDs
+       * secretos do Mestre.
+       *
+       * Se labels estiver ligado,
+       * mostramos apenas o ID de contatos
+       * que são públicos.
+       */
+
+      if(
+        state.labels
+        &&
+        q.visible !== false
+      ){
+
+        ctx.font =
+          '12px Consolas';
+
+        ctx.fillStyle =
+          '#8fffd8';
+
+
+        ctx.fillText(
+          'C-' + q.id,
+          q.x - 391,
+          q.y - 408
+        );
+
+      }
+
+
+      ctx.globalAlpha = 1;
+
+    }
+
+  });
+
+
+  /*
+   * PONTO CENTRAL
+   */
+
+  ctx.fillStyle =
+    '#8fffd8';
+
+  ctx.shadowColor =
+    '#8fffd8';
+
+  ctx.shadowBlur = 8;
+
+
+  ctx.beginPath();
+
+  ctx.arc(
+    0,
+    0,
+    4,
+    0,
+    7
+  );
+
+  ctx.fill();
+
+
+  ctx.shadowBlur = 0;
+
+
+  ctx.restore();
+
+
+  /*
+   * INFORMAÇÕES
+   */
+
+  ctx.fillStyle =
+    '#377e6c';
+
+  ctx.font =
+    '12px Consolas';
+
+
+  ctx.fillText(
+    'RANGE  ' + state.range + ' m',
+    18,
+    28
+  );
+
+
+  ctx.fillText(
+    'DEPTH  ' + state.depth + ' m',
+    18,
+    48
+  );
+
+
+  /*
+   * O Mestre vê o número total.
+   * Jogadores veem apenas contatos públicos.
+   */
+
+  const visibleCount =
+    state.contacts.filter(
+      q => q.visible !== false
+    ).length;
+
+
+  ctx.fillText(
+    'CONTACTS  ' +
+    (
+      master
+        ? state.contacts.length
+        : visibleCount
+    ),
+    650,
+    28
+  );
+
+
+  requestAnimationFrame(
+    draw
+  );
+
 }
+
+
+/* =========================================================
+   INICIAR RENDERIZAÇÃO
+   ========================================================= */
+
 requestAnimationFrame(draw);
-</script></body></html>
+
+</script>
+
+</body>
+</html>
+```
